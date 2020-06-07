@@ -1,0 +1,15 @@
+[
+
+    {
+        "fruit": "Mango Sindh",
+        "size": "Small",
+        "color": "Yellow",
+        "Etc":["A","B"]
+    },
+    {
+        "fruit": "Apple Tasty",
+        "size": "Small",
+        "color": "Red",
+        "Etc":["D","E"]
+    }
+]
