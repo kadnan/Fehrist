@@ -22,7 +22,6 @@ func TestDocumentFileNotFoundCSV(t *testing.T) {
 
 func TestDocumentIndexedCSV(t *testing.T) {
 	path, _ := os.Getwd()
-	fmt.Println(path)
 	fileName := path + "/" + "1.csv"
 	CSVDocument := &fehrist.CSV{IndexName: "local"}
 	indexCount, err := CSVDocument.Index(fileName)
