@@ -3,14 +3,15 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"os"
 	"testing"
 
 	"github.com/kadnan/fehrist/fehrist"
 )
 
 func TestDocumentFileNotFoundCSV(t *testing.T) {
-	path := "/Users/AdnanAhmad/Data/Development/PetProjects/Fehrist/"
-	fileName := path + "LOL.csv"
+	path, _ := os.Getwd()
+	fileName := path + "/" + "LOL.csv"
 	CSVDocument := &fehrist.CSV{IndexName: "local"}
 	indexCount, _ := CSVDocument.Index(fileName)
 
@@ -20,7 +21,7 @@ func TestDocumentFileNotFoundCSV(t *testing.T) {
 }
 
 func TestDocumentIndexedCSV(t *testing.T) {
-	path := "/Users/AdnanAhmad/Data/Development/PetProjects/Fehrist/"
+	path, _ := os.Getwd()
 	fileName := path + "1.csv"
 	CSVDocument := &fehrist.CSV{IndexName: "local"}
 	indexCount, _ := CSVDocument.Index(fileName)
@@ -30,7 +31,7 @@ func TestDocumentIndexedCSV(t *testing.T) {
 }
 
 func TestDocumentFileNotFoundJSON(t *testing.T) {
-	path := "/Users/AdnanAhmad/Data/Development/PetProjects/Fehrist/"
+	path, _ := os.Getwd()
 	fileName := path + "LOL.json"
 	CSVDocument := &fehrist.CSV{IndexName: "local"}
 	indexCount, _ := CSVDocument.Index(fileName)
@@ -40,7 +41,7 @@ func TestDocumentFileNotFoundJSON(t *testing.T) {
 }
 
 func TestDocumentIndexedJSON(t *testing.T) {
-	path := "/Users/AdnanAhmad/Data/Development/PetProjects/Fehrist/"
+	path, _ := os.Getwd()
 	fileName := path + "1.json"
 	JSONDocument := &fehrist.JSON{IndexName: "local"}
 	indexCount, _ := JSONDocument.Index(fileName)
