@@ -1,4 +1,5 @@
 # Fehrist
+[![Build Status](https://travis-ci.org/kadnan/fehrist.svg?branch=master)](https://travis-ci.org/kadnan/gkeevee)
 
 _Fehrist_ is a pure Go library for indexing different types of document. Currently it supports only CSV and JSON but flexible architecture gives you liberty to add more documents. Fehrist(فہرست) is an Urdu word for **Index**. Similar terminologies used in Arabic(فھرس) and Farsi(فہرست) as well.
 
