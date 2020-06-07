@@ -59,10 +59,7 @@ func unmarshalData(data []byte) ([]map[string]interface{}, error) {
 }
 
 // Save function saves the value in the in a file.
-func save(content map[string][2]string, t map[string]string, fileHandleDocument *os.File, fileHandleIndex *os.File) (int8, error) {
-	// if !isLoaded {
-	// 	return -1, errors.New("File not found")
-	// }
+func save(content map[string][2]string, t map[string]string, fileHandleDocument *os.File, fileHandleIndex *os.File) (int, error) {
 
 	defer fileHandleDocument.Close()
 	defer fileHandleIndex.Close()
@@ -90,7 +87,7 @@ func save(content map[string][2]string, t map[string]string, fileHandleDocument 
 
 	}
 
-	return 1, nil
+	return success, nil
 }
 
 /* saveIndex saves all index and document related info on disk. It is responsible for:
@@ -327,10 +324,9 @@ func (c *JSON) Init() int {
 		}
 	}
 	if err != nil {
-		return -1
-	} else {
-		return 1
+		return failure
 	}
+	return success
 }
 
 // Search returns the result against the keyword being provided.
@@ -361,13 +357,13 @@ func (c *JSON) Search(keyword string) (string, int, error) {
 	x := SearchResult{Total: len(keys), Result: documents}
 	jsonData, err := json.Marshal(x)
 	if err != nil {
-		return "", -1, errors.New("Could not decode")
+		return "", failure, errors.New("Could not decode")
 	}
 
 	if found {
 		return string(jsonData), 1, nil
 	}
-	return "", -1, nil
+	return "", failure, nil
 }
 
 //Init initializes the index and document related maps of the given index for CSV Documents
@@ -429,10 +425,10 @@ func (c *CSV) Init() int {
 		}
 	}
 	if err != nil {
-		return -1
-	} else {
-		return 1
+		return failure
 	}
+	return success
+
 }
 
 // Search returns the result against the keyword being provided.
@@ -442,7 +438,7 @@ func (c *CSV) Search(keyword string) (string, int, error) {
 	//var docs []string
 
 	if len(mergedMap) == 0 && len(mergedMapDocuments) == 0 {
-		return "", -1, errors.New("No data was found. Did you call Init function?")
+		return "", failure, errors.New("No data was found. Did you call Init function?")
 	}
 
 	//Check the index map first
@@ -459,13 +455,13 @@ func (c *CSV) Search(keyword string) (string, int, error) {
 	x := SearchResult{Total: len(keys), Result: documents}
 	jsonData, err := json.Marshal(x)
 	if err != nil {
-		return "", -1, errors.New("Could not decode")
+		return "", failure, errors.New("Could not decode")
 	}
 
 	if found {
 		return string(jsonData), 1, nil
 	}
-	return "", 1, nil
+	return "", success, nil
 }
 
 func (c *CSV) assignDocID(entry string, documentFile string) {
