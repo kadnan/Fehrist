@@ -42,7 +42,7 @@ func TestDocumentFileNotFoundJSON(t *testing.T) {
 
 func TestDocumentIndexedJSON(t *testing.T) {
 	path, _ := os.Getwd()
-	fileName := path + "1.json"
+	fileName := path + "/" + "1.json"
 	JSONDocument := &fehrist.JSON{IndexName: "local"}
 	indexCount, _ := JSONDocument.Index(fileName)
 	if indexCount < 1 {
