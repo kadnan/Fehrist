@@ -47,4 +47,17 @@ func main() {
 	}
 }
 ```
+
+### For Searching
+```
+/* Searching Documents */
+
+	CSVDocument.Init()
+	result, _, err := CSVDocument.Search("siddiqi")
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println("Printing the text present in CSV Document")
+	fmt.Println(result)
+```
 If you want to learn how this all work then visit the [blog post](http://blog.adnansiddiqi.me/fehrist-document-indexing-library-in-go/)
