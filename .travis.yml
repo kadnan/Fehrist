@@ -1,0 +1,15 @@
+language: go
+
+go: stable
+
+env:
+  global:
+    - GIMME_DEBUG=1
+
+install: skip
+
+notifications:
+  email: false
+
+script:
+    - go test -v
