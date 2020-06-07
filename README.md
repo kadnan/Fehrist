@@ -47,3 +47,4 @@ func main() {
 	}
 }
 ```
+If you want to learn how this all work then visit the [blog post](http://blog.adnansiddiqi.me/fehrist-document-indexing-library-in-go/)
