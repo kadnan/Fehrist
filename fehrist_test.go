@@ -24,7 +24,10 @@ func TestDocumentIndexedCSV(t *testing.T) {
 	path, _ := os.Getwd()
 	fileName := path + "1.csv"
 	CSVDocument := &fehrist.CSV{IndexName: "local"}
-	indexCount, _ := CSVDocument.Index(fileName)
+	indexCount, err := CSVDocument.Index(fileName)
+	fmt.Println(indexCount)
+	fmt.Println(err)
+
 	if indexCount < 1 {
 		t.Errorf("Test Document Index Failed CSV")
 	}
