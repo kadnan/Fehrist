@@ -23,7 +23,7 @@ func TestDocumentFileNotFoundCSV(t *testing.T) {
 func TestDocumentIndexedCSV(t *testing.T) {
 	path, _ := os.Getwd()
 	fmt.Println(path)
-	fileName := path + "1.csv"
+	fileName := path + "/" + "1.csv"
 	CSVDocument := &fehrist.CSV{IndexName: "local"}
 	indexCount, err := CSVDocument.Index(fileName)
 	fmt.Println(indexCount)
@@ -36,7 +36,7 @@ func TestDocumentIndexedCSV(t *testing.T) {
 
 func TestDocumentFileNotFoundJSON(t *testing.T) {
 	path, _ := os.Getwd()
-	fileName := path + "LOL.json"
+	fileName := path + "/" + "LOL.json"
 	CSVDocument := &fehrist.CSV{IndexName: "local"}
 	indexCount, _ := CSVDocument.Index(fileName)
 	if indexCount != -1 {
